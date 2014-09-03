@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -17,7 +16,6 @@ func Index(rw http.ResponseWriter, req *http.Request) {
 	}
 
 	qry, err := url.QueryUnescape(req.URL.RequestURI())
-	log.Println(qry)
 	if err != nil {
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		return
@@ -40,6 +38,8 @@ func Index(rw http.ResponseWriter, req *http.Request) {
 		ct = "text/javascript"
 	} else if strings.Contains(qry, ".png") {
 		ct = "image/png"
+	} else if strings.Contains(qry, ".jpg") {
+		ct = "image/jpeg"
 	}
 	rw.Header().Set("Content-Type", ct)
 	rw.Write(contents)
