@@ -2,11 +2,12 @@ package main
 
 import (
 	"flag"
-	"github.com/curt-labs/ariesjeep/controllers"
-	"github.com/go-martini/martini"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/aries-auto/ariesjeep/controllers"
+	"github.com/go-martini/martini"
 )
 
 var (
